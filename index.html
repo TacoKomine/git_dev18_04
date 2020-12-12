@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>myMemoPad</title>
+  <link rel='stylesheet' href='css/reset.css'>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+  <h1 id="main_title">調整くん</h1>
+  <!-- ====================================== -->
+  <!-- 幹事用セクション -->
+  <!-- ====================================== -->
+  <!-- 開催するイベント情報と候補日時の入力 -->
+
+  <!-- タブメニュー -->
+  <!-- タブ１：（幹事画面）イベント作成 -->
+  <input type="radio" name="tab_item" id="tab_radio_event_setting" class="tab_radio" checked>
+    <label for="tab_radio_event_setting" class="tab_menu">イベントを作成</label>
+  
+  <!-- タブ2：（参加予定者画面）出欠登録 -->
+  <input type="radio" name="tab_item" id="tab_radio_vote" class="tab_radio">
+    <label for="tab_radio_vote" class="tab_menu">出欠の登録</label>
+  
+  <!-- タブ3：（幹事画面）出欠確認・日時決定 -->
+  <input type="radio" name="tab_item" id="tab_radio_event_finalize" class="tab_radio">
+    <label for="tab_radio_event_finalize" class="tab_menu">開催日時とお店を決める</label>
+  
+  <!-- タブ1 表示内容 -->
+  <div id="tab_contains_event_setting" class="tab_contains">
+    <h1>イベントを作成しましょう。</h1>
+    <ul class="forms">
+      <!-- イベント情報の編集 -->
+        <li class="form-half">
+          <form action="" id="form_event_info">
+            <ul>
+              <li><input name="イベント名" type="text" id="name_event" class="input_event_info" placeholder="イベント名"></li>
+              <li><input name="幹事名" type="text" id="name_producer" class="input_event_info" placeholder="幹事のお名前"></li>
+              <li><textarea name="イベントの説明" id="memo_event_detail" class="input_event_info" placeholder="イベントの説明"></textarea></li>
+            </ul>
+          </form>
+        </li>
+    <!-- イベント開催日時の候補； 編集・候補の追加可能-->
+    <li class="form-half">
+      <form action="" id="form_schedule">
+        <input type="button" id="btn_add_date" class="btn" value="日時の候補を追加" onclick="appendRow()">
+        <table id="tbl_candidate_dates">
+        <!-- 入力 フォーム（表）先頭タイトル行-->
+        <tr>
+            <th>日付</th>
+            <th>時間帯</th>
+        </tr>
+        <!-- 入力 フォーム（表）先頭タイトル行-->
+        <tr>
+            <td>
+              <input name="候補日_1" type="date" class="candi_date" id="candi_date_1">
+            </td>
+            <td>
+              <select name="候補時間_1" class="candi_timezone" id="candi_timezone_1">
+                <option value="empty"></option>
+                <option value="15\:00">15:00 ~ </option>
+                <option value="16\:00">16:00 ~ </option>
+                <option value="17\:00">17:00 ~ </option>
+                <option value="18\:00">18:00 ~ </option>
+                <option value="19\:00">19:00 ~ </option>
+                <option value="20\:00">20:00 ~ </option>
+                <option value="21\:00">21:00 ~ </option>
+              </select>
+            </td>
+        </tr>                           
+        </table>
+      </form> 
+    </li>  
+    </ul>
+  <!-- イベント保存/削除ボタン -->
+  <ul id="btn_setting_control_list">
+    <li><input id="btn_save" class="btn" type="button" value="保存する"></input></li>
+    <!--  削除ボタンは未実装
+      <li><input id="btn_del_event" class="btn" type="button" value="イベントを削除する"></input></li>
+    -->
+  </ul>
+  </div>
+
+<!-- タブ2  表示内容 -->
+<div id="tab_contains_vote" class="tab_contains">
+  <h1>招待されているイベントに出欠を登録しましょう。</h1>
+  <ul class="forms">
+
+    <li class="form-half">
+      <input name="記入者名" class="input_event_info" type="text" id="name_attendee" placeholder="お名前">
+      <select name="お店の要望" class="input_event_info" type="text" id="request" value="▼お店・食べたい物のリクエスト">
+        <option value="居酒屋">居酒屋</option>
+        <option value="レストラン">レストラン</option>
+        <option value="バル">バル</option>
+        <option value="海鮮">海鮮</option>
+        <option value="肉料理">肉料理</option>
+        <option value="中華料理">中華料理</option>
+        <option value="スペイン料理">スペイン料理</option>
+        <option value="焼き鳥">焼き鳥</option>
+        <option value="焼き肉">焼き肉</option>
+        <option value="日本酒">日本酒</option>
+      </select>
+    </li>
+
+    <li class="form-half">
+      <!-- 出席可否を入力する対象を選択 -->
+      <select name="対象イベント" class="input_event_info" id="targ_event">
+        <option value="empty">入力するイベントを選んでください</option>
+      </select>
+    </li>
+  </ul>
+
+  <div class='div_results'>
+    <table id="tbl_ans">
+      <!-- 出欠表 先頭タイトル行-->
+      <tr>
+          <th>日付</th>
+          <th>時間帯</th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="btn_wrapper">
+    <input id="btn_submit" class="big_btn" type="button" value="出欠を送信する"></input>
+  </div>
+</div>
+
+<!-- タブ3  表示内容 -->
+<div id="tab_contains_event_finalize" class="tab_contains">
+  <h1>出欠を確認し、掲載日時とお店を決めましょう。</h1>
+
+    <!-- 出席可否を入力する対象を選択 -->
+    <select name="集計対象イベント" class="input_event_info" id="targ_show_result_event">
+      <option value="empty">集計するイベントを選んでください</option>
+    </select>
+
+    <!-- 集計・出欠確定ボタン -->
+    <div id="btn_finalize_list">
+      <input id="btn_finalize" class="btn" type="button" value="イベントを確定する"></input>
+    </div>
+
+    <div class='div_results'>
+      <table id="tbl_results">
+        <!-- 出欠表 先頭タイトル行-->
+        <tr>
+            <th>日付</th>
+            <th>時間帯</th>
+        </tr>
+      </table>
+    </div>
+
+    <!-- レストランのレコメンド -->
+    <div id='restaurant_suggestion'>
+      <h1>おすすめの店</h1>
+      <div id="map" class="map"></div> <!--mapを表示-->
+      <ul id="shop-list"></ul> <!--お店の詳細情報を表示-->
+    </div>
+</div>
+
+
+</main>
+<footer>
+   <small>Copyright(C) Studio TACO. All Rights Reserved.</small>
+</footer>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Google Map API -->
+  <!-- key required -->
+  <script src="https://maps.googleapis.com/maps/api/js?key={YOUR_KEY}"></script>
+  <script src="./js/chouseisan.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,312 @@
+main {
+    width: 95%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #27ae60;
+    color: #ffffff;
+    align-items: center;
+}
+
+#main_title{
+    font-size: 50px;
+    font-style: bold;
+    margin: 30px;
+}
+
+body{
+    background-color: #27ae60;
+}
+
+h1{
+    color: aliceblue;
+    font-style: bold;
+    font-size:40px;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px 0;
+    background-color: #7f8c8d;
+}
+
+#sec_event_setting{
+    visibility: hidden;
+}
+
+
+/**
+ タブのスタイル 
+**/
+.tab_radio{
+    /*ラジオボタンは表示しない*/
+    display:none;
+  }
+
+  .tab_menu{
+    /*タブの基本スタイル*/
+    border: solid white;
+    border-width:1px 1px 0 1px;
+    border-radius:3px 3px 0 0;
+    margin: 0 2px;
+    padding:0 3px;
+    width:29%;
+    display:inline-block;
+    /*選択されていないタブは透明色*/
+    background-color:transport;
+  }
+  
+  .tab_radio:checked + .tab_menu{
+    /*選択されているタブは白背景*/
+    /* タブコンテンツの上線にかぶせて隠す */
+    background-color:#218c74;
+    color:white;
+    font-style: bold;
+  }
+  
+  .tab_contains{
+    /*コンテンツの基本スタイル*/
+    width:90%;
+    border: solid white 1.3px;
+    border-radius:3px;
+    padding:1rem;
+    /*選択されたタブで上線をかぶせる*/
+    margin-top:-1px;
+    background-color:#218c74;
+    /*選択されていないコンテンツは非表示*/
+    display:none;
+  }
+  
+  #tab_radio_event_setting:checked ~ #tab_contains_event_setting,
+  #tab_radio_vote:checked ~ #tab_contains_vote,
+  #tab_radio_event_finalize:checked ~ #tab_contains_event_finalize{
+    display:block;
+  }
+
+/**
+入力フォームのスタイル
+**/
+.forms{
+    display: flex;
+}
+
+.form-half{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form_event_info{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.input_event_info{
+    width: 90%;
+    height: 30px;
+    margin-top: 10px;
+    border: none;
+}
+
+#btn_add_date{
+    width: 100%;
+    height: 25px;
+    font-size: 15px;
+    color: #2c3e50;
+    background-color: #f1c40f;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: #ffffff;
+    border-width: 1px;
+}
+
+#tbl_candidate_dates{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.candi_date{
+    margin-top: 5px;
+    height: 30px;
+}
+.candi_timezone{
+    margin-top: 5px;
+    width: 100px;
+    height: 30px;
+}
+
+#btn_setting_control_list{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn{
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    font-style: bold;
+    color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+
+#btn_save{
+    background-color: #3498db;
+}
+
+#btn_del_event{
+    background-color: #e74c3c;
+}
+
+#sec_vote{
+    margin-top: 80px;
+}
+
+#targ_event{
+
+}
+
+.big_btn{
+    width: 500px;
+    height: 40px;
+    font-size: 20px;
+    font-style: bold;
+    color: #ffffff;
+    background-color: #f39c12;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+
+.div_results{
+    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+.btn_wrapper{
+    width: 100%;
+    margin: 0px auto;
+}
+
+table{
+    width: 80%;
+    border-spacing: 0;
+}
+  
+table th{
+    border-bottom: solid 2px #f39c12;
+    padding: 10px 0;
+}
+  
+table td{
+    width: 50px;
+    border-bottom: solid 2px #ddd;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.marked_cell{
+    background-color: #d1ccc0;
+    color: black;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+
+/* 店舗レコメンド用リストと地図のスタイル */
+#restaurant_suggestion{
+    margin-top: 30px;
+}
+
+*{
+    margin:0;
+    padding:0;
+  }
+
+#map {
+    width:100%;
+    max-width: 680px;
+    margin: 0 auto;
+    height: 300px;
+  }
+  
+#shop-list {
+    list-style: none;
+    width: 100%;
+  }
+
+#restaurant_suggestion {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+span {
+    display: block;
+  }
+  
+h1 {
+    text-align: center;
+    border-bottom: solid 1px white;
+    padding-bottom: 5px;
+    margin: 20px;
+    font-size: 20px;
+}
+
+a {
+    display: flex;
+    text-decoration: none;
+    color: #555;
+  }
+  .each-shop {
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #5555;
+    position: relative;
+    background-color: #33d9b2;
+  }
+  .shop-img {
+    width:100px;
+    height: 100px;
+  }
+  .shop-name{
+    font-weight: bold;
+    border-bottom: solid 1px #5555;
+  }
+  .time {
+    font-size: 12px;
+  }
+  .shop-content {
+    margin: 10px;
+  }
+  .fa-map-marker{
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    color: red;
+  }
+  .icon {
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #fff;
+    font-size: 20px;
+  }
+  @media screen and (min-width: 750px){
+    h1 {
+      font-size: 24px;
+    }
+  }
